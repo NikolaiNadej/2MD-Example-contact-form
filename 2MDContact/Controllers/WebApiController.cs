@@ -24,12 +24,12 @@ namespace MD2Contact.Controllers
             {
                 var json = System.Text.Encoding.UTF8.GetString(
                     System.Convert.FromBase64String(body.Content));
-                var content = Newtonsoft.Json.JsonConvert.DeserializeObject<ContactForm>(json);
-                // insert
+                var content = Newtonsoft.Json.JsonConvert.DeserializeObject<ContactForms>(json);
+
                 using (var db = new DatabaseContext())
                 {
-                    var customers = db.Set<ContactForm>();
-                    customers.Add(new ContactForm()
+                    var customers = db.Set<ContactForms>();
+                    customers.Add(new ContactForms()
                     {
                         FirstName = content.FirstName, 
                         LastName = content.LastName,

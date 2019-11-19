@@ -9,6 +9,6 @@ export class ApplicationService {
   constructor(private httpClient: HttpClient){}
 
   CallServer(data: {content: string}){  
-      return this.httpClient.post('http://localhost:54528/api/WebApi/SendContactData', data);
+      return this.httpClient.post('https://localhost:44364/api/WebApi/SendContactData', data);
   }  
 }

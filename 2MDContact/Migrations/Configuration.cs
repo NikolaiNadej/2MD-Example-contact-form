@@ -9,7 +9,7 @@ namespace MD2Contact.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(MD2Contact.Models.DatabaseContext context)

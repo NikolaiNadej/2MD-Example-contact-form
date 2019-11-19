@@ -162,12 +162,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201911191440377_ContactTable.cs" />
-    <Compile Include="Migrations\201911191440377_ContactTable.Designer.cs">
-      <DependentUpon>201911191440377_ContactTable.cs</DependentUpon>
+    <Compile Include="Migrations\201911192327258_Contacts.cs" />
+    <Compile Include="Migrations\201911192327258_Contacts.Designer.cs">
+      <DependentUpon>201911192327258_Contacts.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ContactForm.cs" />
+    <Compile Include="Models\ContactForms.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -225,8 +225,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201911191440377_ContactTable.resx">
-      <DependentUpon>201911191440377_ContactTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201911192327258_Contacts.resx">
+      <DependentUpon>201911192327258_Contacts.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

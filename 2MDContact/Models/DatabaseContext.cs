@@ -10,8 +10,8 @@ namespace MD2Contact.Models
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class DatabaseContext : DbContext
     {
-        public DbSet<ContactForm> ContactForm { get; set; }
-
+        public DbSet<ContactForms> ContactForm { get; set; }
+      
         public DatabaseContext() : base("DefaultConnection")
         {
             Configuration.ValidateOnSaveEnabled = false;
