@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+    <span class="fill-remaining-space">Contact Form 2MD</span>
+</mat-toolbar>
+
+<div class="container" *ngIf="!post; else forminfo" fxLayout fxFill fxLayoutAlign="center" novalidate>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+        <mat-form-field class="form-element">
+            <input matInput placeholder="First Name" formControlName="firstname">
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+            <input matInput placeholder="Last Name" formControlName="lastname">
+            <mat-error *ngIf="!lastname.valid && lastname.touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+            <input matInput placeholder="Email Address" formControlName="emailaddress">
+            <mat-error *ngIf="!formGroup.controls['emailaddress'].valid && formGroup.controls['emailaddress'].touched">
+                {{ getErrorEmail() }}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+            <input matInput placeholder="Phone Number" formControlName="phonenumber">
+            <mat-error *ngIf="!formGroup.controls['phonenumber'].valid && formGroup.controls['phonenumber'].touched">
+                {{ getErrorPhoneNumber() }}
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+            <mat-label>Area of interest</mat-label>
+            <mat-select formControlName="areaofinterest">
+                <mat-option *ngFor="let interest of interests" [value]="interest.value" (onSelectionChange)="areaOfInterest = $event.source.value">
+                    {{interest.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+            <textarea matInput placeholder="Message" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="message"></textarea>
+            <mat-error *ngIf="!formGroup.controls['message'].valid && formGroup.controls['message'].touched">
+                Required field, must be between 5 and 300 characters.
+            </mat-error>
+        </mat-form-field>
+
+
+        <div class="form-element">
+            <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+        </div>
+    </form>
+</div>
+
+<ng-template #forminfo>
+    <div class="container">
+        {{ post | json }}
+    </div>
+</ng-template>
