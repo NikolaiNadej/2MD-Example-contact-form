@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApplicationService } from '../application.service';
+import {Router} from "@angular/router"
 
 export interface Interest {
   value: string;
@@ -17,6 +18,7 @@ export class ContactFormComponent {
   formGroup: FormGroup;
   titleAlert: string = 'This field is required';
   post: any = '';
+  isLoading: boolean = false;
   
   private _areaOfInterest : string;
   public get areaOfInterest() : string {
@@ -26,7 +28,7 @@ export class ContactFormComponent {
     this._areaOfInterest = v;
   }
   
-  constructor(private formBuilder: FormBuilder, private applicationService: ApplicationService) { }
+  constructor(private formBuilder: FormBuilder, private applicationService: ApplicationService, private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -71,21 +73,22 @@ export class ContactFormComponent {
   ];
 
   getErrorEmail() {
-    return this.formGroup.get('email').hasError('required') ? 'Field is required' :
-      this.formGroup.get('email').hasError('pattern') ? 'Not a valid Email Address' :
+    return this.formGroup.get('emailaddress').hasError('required') ? 'Field is required' :
+      this.formGroup.get('emailaddress').hasError('pattern') ? 'Not a valid Email Address' :
       '';
   }
   
   getErrorPhoneNumber() {
-    return this.formGroup.get('number').hasError('required') ? 'Field is required' :
-      this.formGroup.get('number').hasError('pattern') ? 'Not a valid Phone Number' :
+    return this.formGroup.get('phonenumber').hasError('required') ? 'Field is required' :
+      this.formGroup.get('phonenumber').hasError('pattern') ? 'Not a valid Phone Number' :
       '';
   }
 
   onSubmit(post) {
     let json = JSON.stringify(post)
+    this.isLoading = true;
     this.applicationService.CallServer({content: btoa(unescape(encodeURIComponent(json)))}).subscribe(
-      res => console.log('HTTP response', res),
+      res => this.router.navigate(['/thankyou']),
       err => console.log('HTTP Error', err),
       () => console.log('HTTP request completed.')
     );  

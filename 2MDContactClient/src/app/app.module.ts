@@ -11,11 +11,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApplicationService } from './application.service';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactFormComponent,
+    ThankYouComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { ApplicationService } from './application.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
+  exports: [AppRoutingModule, ContactFormComponent, ThankYouComponent],
   providers: [    
   ],
   bootstrap: [AppComponent]

@@ -8,6 +8,18 @@
     padding: 10px;
 }
 
+.spinner {
+    width: 20%;
+    height: 40%;
+    margin: auto;
+    overflow: hidden !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 15%;
+    right: 1%;
+}
+
 .form {
     min-width: 150px;
     max-width: 500px;
@@ -21,4 +33,12 @@
 
 .button {
     width: 100%;
+}
+
+.mat-spinner {
+    width: 100% !important;
+}
+
+.mat-spinner ::ng-deep svg {
+    width: 100% !important;
 }
